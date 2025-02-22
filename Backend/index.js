@@ -10,6 +10,7 @@ import channelRoutes from './routes/ChannelRoutes.js';
 import communityRoutes from './routes/CommunityRoutes.js';
 import progressTrackerRoutes from './routes/ProgressTrackerRoutes.js';
 import chatbotRoutes from './routes/ChatbotRoutes.js';
+import forumRoutes from "./routes/ForumRoutes.js";
 import cors from "cors";
 
 const app = express();
@@ -44,7 +45,7 @@ app.use("/api/channels", channelRoutes);
 app.use("/api/communities", communityRoutes);
 app.use("/api/progress", progressTrackerRoutes);
 app.use("/api/chatbot", chatbotRoutes);
-
+app.use("/api/forum", forumRoutes);
 app.get("/", (req, res) => {
   res.send("Welcome to the Exam Preparation!");
 });
