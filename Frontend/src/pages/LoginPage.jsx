@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
 import "./LoginPage.css"; 
+import GetStartedPage from "./GetStartedPage";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -19,17 +20,27 @@ const LoginPage = () => {
     e.preventDefault();
     console.log("Login Data:", formData);
     try{
-      axios.post('http://localhost:3000/api/users/login', formData).then((response) => {
-        if(response.status === 200){
+      let Response = await axios.post('http://localhost:3000/api/users/login', formData, {
+        headers: {
+          'Content-Type': 'application/json'  // Add this line
+        }})
+        console.log("Response:", Response.status);
+        if(Response.status === 200){
           console.log("Login successful");
           navigate("/"); // Redirect to Get Started page after login
         }
-        else
-          navigate("/get-started"); // Redirect to Get Started page after login
-      });
       }catch (error) {
         console.log("Error:", error);
+        if(error.response.status === 404){
+          console.log("User not found");
+          navigate("/get-started"); // Redirect to Get Started page after login
+        }
+        else if(error.response.status === 401){
+          console.log("Login failed");
+          navigate("/login"); // Redirect to Get Started page after login
+        }
       }
+
   };
 
   return (

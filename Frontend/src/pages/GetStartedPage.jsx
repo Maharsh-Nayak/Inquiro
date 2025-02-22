@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./GetStartedPage.css";
+import axios from "axios";
+import "./LoginPage.css"; 
 
 const GetStartedPage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -14,9 +18,30 @@ const GetStartedPage = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("User Data:", formData);
+    try{
+      let Response = await axios.post('http://localhost:3000/api/users/sign_up', formData, {
+        headers: {
+          'Content-Type': 'application/json'  // Add this line
+        }})
+        console.log("Response:", Response);
+        if(Response.status === 200){
+          console.log("Login successful");
+          navigate("/") // Redirect to Get Started page after login
+        }
+      }catch (error) {
+        console.log("Error:", error);
+        if(error.response.status === 400){
+          console.log("User found");
+          navigate("/login"); // Redirect to Get Started page after login
+        }
+        else if(error.response.status === 401){
+          console.log("Login failed");
+          navigate("/login"); // Redirect to Get Started page after login
+        }
+      }
   };
 
   return (
