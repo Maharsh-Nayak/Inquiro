@@ -26,6 +26,8 @@ const LoginPage = () => {
       });
 
       console.log("Response:", response.status);
+      console.log("Response Data:", response.data);
+      console.log("Response:", response);
       if (response.status === 200) {
         console.log("Login successful");
         navigate("/");
