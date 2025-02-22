@@ -42,7 +42,7 @@ router.post("/login", async (req, res) => {
       console.log("Login failed");
       res.status(401).json({ error: "Wrong Password" });
     }
-  }
+  } 
   catch(error) {
         console.error("Login Error:", error);
         res.status(500);
@@ -72,6 +72,29 @@ router.post("/sign_up" , async (req, res) => {
     console.log(err);
     res.status(401).json({ error: "Failed to create user" });
   });
+});
+
+router.post("/forums", async (req, res) => {
+  const { title, content, UserId } = req.body;
+
+  try {
+    if (!title || !content || !UserId) {
+      return res.status(400).json({ error: "All fields are required" });
+    }
+
+    const newThread = new ForumThread({
+      title,
+      content,
+      author: UserId,
+    });
+
+    await newThread.save();
+
+    res.status(201).json({ message: "Forum post created successfully", thread: newThread });
+  } catch (error) {
+    console.error("Error creating forum post:", error);
+    res.status(500).json({ error: "Failed to create forum post" });
+  }
 });
 
 export default router;
