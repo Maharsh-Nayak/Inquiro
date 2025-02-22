@@ -1,48 +1,84 @@
+/* GetStartedPage.css */
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+/* Container */
 .get-started-container {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #fff;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    text-align: center;
-  }
-  
-  h2 {
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .get-started-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .get-started-form input,
-  .get-started-form select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  .get-started-form select {
-    cursor: pointer;
-  }
-  
-  .btn-primary {
-    background-color: #0056b3;
-    color: white;
-    padding: 10px;
-    font-size: 18px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .btn-primary:hover {
-    background-color: #003f7f;
-  }
-  
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.get-started-container h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #2c3e50;
+}
+
+/* Form */
+.get-started-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.get-started-form input,
+.get-started-form select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.get-started-form input:focus,
+.get-started-form select:focus {
+  border-color: #3498db;
+}
+
+/* Button */
+.btn-primary {
+  padding: 10px;
+  font-size: 1.2rem;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background: #2980b9;
+}
+.btn-secondary {
+  background: #ccc;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.btn-secondary:hover {
+  background: #bbb;
+}
