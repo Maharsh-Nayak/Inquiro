@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useEffect } from "react";
 import "./LoginPage.css"; 
-import GetStartedPage from "./GetStartedPage";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -11,6 +9,7 @@ const LoginPage = () => {
     username: "",
     password: "",
   });
+  const [errorMessage, setErrorMessage] = useState(""); // State for error message
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,29 +17,35 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage(""); // Reset error message on new submit
     console.log("Login Data:", formData);
-    try{
-      let Response = await axios.post('http://localhost:3000/api/users/login', formData, {
-        headers: {
-          'Content-Type': 'application/json'  // Add this line
-        }})
-        console.log("Response:", Response.status);
-        if(Response.status === 200){
-          console.log("Login successful");
-          navigate("/"); // Redirect to Get Started page after login
-        }
-      }catch (error) {
-        console.log("Error:", error);
-        if(error.response.status === 404){
-          console.log("User not found");
-          navigate("/get-started"); // Redirect to Get Started page after login
-        }
-        else if(error.response.status === 401){
-          console.log("Login failed");
-          navigate("/login"); // Redirect to Get Started page after login
-        }
-      }
 
+    try {
+      let response = await axios.post('http://localhost:3000/api/users/login', formData, {
+        headers: { 'Content-Type': 'application/json' }
+      });
+
+      console.log("Response:", response.status);
+      if (response.status === 200) {
+        console.log("Login successful");
+        navigate("/");
+      }
+    } catch (error) {
+      console.log("Error:", error);
+
+      if (error.response) {
+        if (error.response.status === 404) {
+          setErrorMessage("User not found. Please register.");
+          navigate("/get-started");
+        } else if (error.response.status === 401) {
+          setErrorMessage("Incorrect password. Please try again.");
+        } else {
+          setErrorMessage("Something went wrong. Please try again later.");
+        }
+      } else {
+        setErrorMessage("Server not responding. Check your internet connection.");
+      }
+    }
   };
 
   return (
@@ -65,6 +70,10 @@ const LoginPage = () => {
         />
         <button type="submit" className="btn btn-primary">Login</button>
       </form>
+
+      {/* Show error message if exists */}
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
+
       <p className="register-link">
         Don't have an account? <a href="/get-started">Register here</a>
       </p>
