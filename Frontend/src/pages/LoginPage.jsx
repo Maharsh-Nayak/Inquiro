@@ -19,8 +19,14 @@ const LoginPage = () => {
     e.preventDefault();
     console.log("Login Data:", formData);
     try{
-      axios.post('http://localhost:3000/api/users/login', formData);
-      navigate("/get-started"); // Redirect to Get Started page after login
+      axios.post('http://localhost:3000/api/users/login', formData).then((response) => {
+        if(response.status === 200){
+          console.log("Login successful");
+          navigate("/"); // Redirect to Get Started page after login
+        }
+        else
+          navigate("/get-started"); // Redirect to Get Started page after login
+      });
       }catch (error) {
         console.log("Error:", error);
       }
