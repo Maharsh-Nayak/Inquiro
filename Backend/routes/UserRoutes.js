@@ -93,7 +93,7 @@ router.post("/forums", async (req, res) => {
     res.status(201).json({ message: "Forum post created successfully", thread: newThread });
   } catch (error) {
     console.error("Error creating forum post:", error);
-    res.status(500).json({ error: "Failed to create forum post" });
+    res.status(404).json({ error: "Failed to create forum post" });
   }
 });
 
