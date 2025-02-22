@@ -18,7 +18,7 @@ app.use(express.json());
 
 
 
-connect(process.env.MONGO_URI, {
+connect('mongodb+srv://Userdb:whyshouldisay1@cluster0.uuehk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
