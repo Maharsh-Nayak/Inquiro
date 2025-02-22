@@ -14,10 +14,11 @@
   "dependencies": {
     "@faker-js/faker": "^9.5.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
     "mongoose": "^8.10.1",
-    "node-modules": "^1.0.1",
+    "node-modules": "^0.0.1",
     "nodemon": "^3.1.9"
   }
 }
