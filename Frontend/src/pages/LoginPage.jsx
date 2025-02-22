@@ -10,6 +10,7 @@ const LoginPage = () => {
     password: "",
   });
   const [errorMessage, setErrorMessage] = useState(""); // State for error message
+  const [error, setErro] = useState(false); // State for error mes
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,11 +18,10 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMessage(""); // Reset error message on new submit
     console.log("Login Data:", formData);
 
     try {
-      let response = await axios.post('http://localhost:3000/api/users/login', formData, {
+      let response = await axios.post('/api/users/login', formData, {
         headers: { 'Content-Type': 'application/json' }
       });
 
@@ -34,7 +34,9 @@ const LoginPage = () => {
       console.log("Error:", error);
 
       if (error.response) {
+        setErro(true);
         if (error.response.status === 404) {
+          console.log("User not found. Redirecting to register page.");
           setErrorMessage("User not found. Please register.");
           navigate("/get-started");
         } else if (error.response.status === 401) {
@@ -72,7 +74,7 @@ const LoginPage = () => {
       </form>
 
       {/* Show error message if exists */}
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      {error && <p className="error-message">{errorMessage}</p>}
 
       <p className="register-link">
         Don't have an account? <a href="/get-started">Register here</a>

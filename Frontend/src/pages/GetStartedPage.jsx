@@ -25,7 +25,7 @@ const GetStartedPage = () => {
     console.log("User Data:", formData);
 
     try {
-      let Response = await axios.post('http://localhost:3000/api/users/sign_up', formData, {
+      let Response = await axios.post('/api/users/sign_up', formData, {
         headers: { 'Content-Type': 'application/json' }
       });
 
