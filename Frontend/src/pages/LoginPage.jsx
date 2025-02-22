@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useEffect } from "react";
 import "./LoginPage.css"; 
 
 const LoginPage = () => {
@@ -13,11 +15,15 @@ const LoginPage = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Login Data:", formData);
-    // Handle authentication logic here (you can add API calls later)
-    navigate("/get-started"); // Redirect to Get Started page after login
+    try{
+      axios.post('http://localhost:3000/api/users/login', formData);
+      navigate("/get-started"); // Redirect to Get Started page after login
+      }catch (error) {
+        console.log("Error:", error);
+      }
   };
 
   return (

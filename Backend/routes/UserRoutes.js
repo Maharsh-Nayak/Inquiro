@@ -22,4 +22,9 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.post("/login", async (req, res) => {
+  console.log("Login Data:", req.body);
+  res.send("Login route");
+});
+
 export default router;
