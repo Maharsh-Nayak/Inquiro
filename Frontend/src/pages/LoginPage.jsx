@@ -20,7 +20,7 @@ const LoginPage = () => {
     e.preventDefault();
     console.log("Login Data:", formData);
     try{
-      let Response = await axios.post('http://localhost:3000/api/users/login', formData, {
+      let Response = await axios.post('/api/users/login', formData, {
         headers: {
           'Content-Type': 'application/json'  // Add this line
         }})

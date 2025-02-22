@@ -5,10 +5,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   server: {
     proxy: {
-      '/api': { // Use regex to match any /api route
-        target: 'http://localhost:3000',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
+      '/api': { 
+        target: 'http://localhost:3000'
       }
     }
   },
