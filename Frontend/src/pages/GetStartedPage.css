@@ -1,0 +1,48 @@
+.get-started-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  h2 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .get-started-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .get-started-form input,
+  .get-started-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .get-started-form select {
+    cursor: pointer;
+  }
+  
+  .btn-primary {
+    background-color: #0056b3;
+    color: white;
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover {
+    background-color: #003f7f;
+  }
+  
