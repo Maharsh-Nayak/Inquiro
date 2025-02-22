@@ -32,7 +32,7 @@ router.post("/login", async (req, res) => {
     let user = await User.findOne({ name: username }); 
     if(!user){
       console.log("User not found");
-      res.status(404);
+      res.status(404).json({ error: "User not found" });
     }
     else if(user.password === password){
       console.log("Login successful");
@@ -55,23 +55,24 @@ router.post("/sign_up" , async (req, res) => {
   let { username, email, phone, password, exam } = req.body;
   let name = username;
 
-  let check = await User
-    .findOne({ name: username, email:email });
+  let check = await User.findOne({ name: username, email:email });
   if(check){
     console.log("User already exists");
     res.status(400).json({ error: "User already exists" });
   }
-
-  let newUser = new User({ name, email, phone, password, exam });
-  await newUser.save().then(() => {
-    console.log("User created")
-    res.status(200).json(newUser);
-  }).catch((err) => {
-    console.log("Error:", err);
-    console.log("Failed to create user");
-    console.log(err);
-    res.status(401).json({ error: "Failed to create user" });
-  });
+  else
+  {
+    let newUser = new User({ name, email, phone, password, exam });
+    await newUser.save().then(() => {
+      console.log("User created")
+      res.status(200).json(newUser);
+    }).catch((err) => {
+      console.log("Error:", err);
+      console.log("Failed to create user");
+      console.log(err);
+      res.status(401).json({ error: "Failed to create user" });
+    });
+  }
 });
 
 export default router;

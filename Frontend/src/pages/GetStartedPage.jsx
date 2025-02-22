@@ -35,6 +35,7 @@ const GetStartedPage = () => {
         console.log("Error:", error);
         if(error.response.status === 400){
           console.log("User found");
+          alert("User already exists");
           navigate("/login"); // Redirect to Get Started page after login
         }
         else if(error.response.status === 401){
