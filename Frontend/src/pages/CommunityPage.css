@@ -1,0 +1,128 @@
+/* Community Page Styles */
+
+/* General Layout */
+.community-container {
+    display: flex;
+    height: 100vh;
+    background-color: #f9f9f9;
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    width: 250px;
+    background-color: #1a1a1a;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .sidebar h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+  }
+  
+  .sidebar button {
+    background: none;
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 18px;
+    width: 100%;
+  }
+  
+  .sidebar button:hover, .sidebar button.active {
+    background-color: #333;
+  }
+  
+  /* Main Content */
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .main-content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .doubts-container, .announcements-container, .chat-container {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+  }
+  
+  /* Input Box for Doubts & Chat */
+  .input-box {
+    display: flex;
+    padding: 10px;
+    background: white;
+    border-top: 2px solid #ddd;
+  }
+  
+  .input-box input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .input-box button {
+    background: #ffcc00;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  
+  .input-box button:hover {
+    background: #e6b800;
+  }
+  .message-input-container, .doubt-input-container {
+    position: fixed;
+    bottom: 10px; /* Move slightly up */
+    left: 250px; /* Adjust based on sidebar width */
+    width: 60%; /* Limit width to 60% of the screen */
+    background: white;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Reduce gap */
+    padding: 8px; /* Reduce padding */
+    border-top: 1px solid #ddd;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px; /* Optional: Add rounded corners */
+}
+
+.message-input-container input, .doubt-input-container input {
+    flex: 1;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    height: 30px;
+}
+
+.message-input-container button, .doubt-input-container button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.message-input-container button:hover, .doubt-input-container button:hover {
+    background-color: #0056b3;
+}
