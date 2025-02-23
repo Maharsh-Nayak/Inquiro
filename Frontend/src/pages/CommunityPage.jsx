@@ -20,7 +20,7 @@ const CommunityPage = () => {
 
   const handleLogout = () => {
       axios
-        .post("/api/users/logout")
+        .post("https://inquiro.onrender.com/api/users/logout")
         .then((res) => {
           console.log("Logout Response:", res.status);
           navigate("/");
@@ -44,7 +44,7 @@ const CommunityPage = () => {
 
     try {
       let res = await axios.post(
-        `/api/forum/${activeThreadId}/comments`,
+        `https://inquiro.onrender.com/api/forum/${activeThreadId}/comments`,
         { newComment }, // Send as object
         {
           headers: { "Content-Type": "application/json" },
@@ -78,7 +78,7 @@ const CommunityPage = () => {
   useEffect(() => {
     if (selectedTab === "community") {
       axios
-        .get("/api/communityChat/")
+        .get("https://inquiro.onrender.com/api/communityChat/")
         .then((res) => {
           console.log("Chats:", res.data);
           setChatText(res.data);
@@ -89,7 +89,7 @@ const CommunityPage = () => {
     }
     else if (selectedTab === "forum") {
       axios
-        .get("/api/forum/")
+        .get("https://inquiro.onrender.com/api/forum/")
         .then((res) => {
           console.log("Chats:", res.data);
           setForumThreads(res.data);
@@ -98,7 +98,7 @@ const CommunityPage = () => {
           console.error("Error fetching chats:", error);
         });
 
-      axios.get("/api/forum/comments").then((res) => {
+      axios.get("https://inquiro.onrender.com/api/forum/comments").then((res) => {
         console.log("Comments:", res.data);
         setComments(res.data);
       });
@@ -112,7 +112,7 @@ const CommunityPage = () => {
 
     try {
       let res = await axios.post(
-        '/api/communityChat/',
+        'https://inquiro.onrender.com/api/communityChat/',
         { newMsg }, // Send as object
         {
           headers: { "Content-Type": "application/json" },
@@ -138,7 +138,7 @@ const CommunityPage = () => {
     console.log("Doubt:", newDoubt);
     try {
       let res = await axios.post(
-        '/api/forum/',
+        'https://inquiro.onrender.com/api/forum/',
         { newDoubt }, // Send as object
         {
           headers: { "Content-Type": "application/json" },
@@ -168,7 +168,7 @@ const CommunityPage = () => {
   const handleLike = async (threadId) => {
     try {
       let res = await axios.post(
-        `/api/forum/${threadId}/like`,
+        `https://inquiro.onrender.com/api/forum/${threadId}/like`,
         {},
         {
           headers: { "Content-Type": "application/json" },
