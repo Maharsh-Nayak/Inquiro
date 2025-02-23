@@ -125,3 +125,37 @@ body:has(.landing-container) {
     width: 90%;
   }
 }
+html {
+  scroll-behavior: smooth;
+}
+
+.about-us {
+  padding: 50px 20px;
+  background-color: #f8f9fa;
+  text-align: center;
+}
+
+.about-us h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.about-us p {
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.btn-link:hover {
+  color: #0056b3;
+}

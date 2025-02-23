@@ -1,128 +1,168 @@
-/* Community Page Styles */
-
-/* General Layout */
+/* Community Page - Overall Styles */
 .community-container {
-    display: flex;
-    height: 100vh;
-    background-color: #f9f9f9;
-  }
-  
-  /* Sidebar */
-  .sidebar {
-    width: 250px;
-    background-color: #1a1a1a;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-  }
-  
-  .sidebar h2 {
-    margin-bottom: 20px;
-    font-size: 22px;
-  }
-  
-  .sidebar button {
-    background: none;
-    color: white;
-    border: none;
-    padding: 15px;
-    cursor: pointer;
-    text-align: left;
-    font-size: 18px;
-    width: 100%;
-  }
-  
-  .sidebar button:hover, .sidebar button.active {
-    background-color: #333;
-  }
-  
-  /* Main Content */
-  .main-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-  }
-  
-  .main-content h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .doubts-container, .announcements-container, .chat-container {
-    flex: 1;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-  }
-  
-  /* Input Box for Doubts & Chat */
-  .input-box {
-    display: flex;
-    padding: 10px;
-    background: white;
-    border-top: 2px solid #ddd;
-  }
-  
-  .input-box input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  .input-box button {
-    background: #ffcc00;
-    border: none;
-    padding: 10px 20px;
-    margin-left: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-  }
-  
-  .input-box button:hover {
-    background: #e6b800;
-  }
-  .message-input-container, .doubt-input-container {
-    position: fixed;
-    bottom: 10px; /* Move slightly up */
-    left: 250px; /* Adjust based on sidebar width */
-    width: 60%; /* Limit width to 60% of the screen */
-    background: white;
-    display: flex;
-    align-items: center;
-    gap: 5px; /* Reduce gap */
-    padding: 8px; /* Reduce padding */
-    border-top: 1px solid #ddd;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 8px; /* Optional: Add rounded corners */
+  display: flex;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #1B1F3B, #2C2F45); /* Dark Navy to Gray */
+  color: white;
 }
 
-.message-input-container input, .doubt-input-container input {
-    flex: 1;
-    padding: 6px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-    outline: none;
-    height: 30px;
+/* Left Sidebar */
+.community-container .sidebar {
+  width: 220px;
+  background: linear-gradient(to bottom, #1B1F3B, #2C2F45);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid rgba(255, 255, 255, 0.2);
 }
 
-.message-input-container button, .doubt-input-container button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
+.community-container .sidebar button {
+  padding: 12px;
+  margin: 5px 0;
+  border: none;
+  background: #2C2F45;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: left;
+  transition: 0.3s;
+  border-radius: 5px;
 }
 
-.message-input-container button:hover, .doubt-input-container button:hover {
-    background-color: #0056b3;
+.community-container .sidebar button:hover,
+.community-container .sidebar .active {
+  background: #F4C95D;
+  color: #1B1F3B;
+}
+
+/* Main Content */
+.community-container .main-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: linear-gradient(to bottom, #1E2A38, #2C2F45);
+}
+
+/* Announcements Section */
+.community-container .announcement-section {
+  padding: 20px;
+  background: #1E1E2E; /* Dark Navy */
+  border-radius: 10px;
+  max-width: 85%;
+  margin: auto;
+  color: #f8f9fa;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Each Announcement Box */
+.community-container .announcement {
+  background: #282A36; /* Dark Gray */
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+  border-left: 5px solid #F4C95D; /* Gold Accent */
+  box-shadow: 2px 2px 8px rgba(255, 255, 255, 0.1);
+}
+
+/* Announcement Title */
+.community-container .announcement-title {
+  font-size: 20px;
+  color: #F4C95D; /* Gold */
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* Each Point as a Separate <h> */
+.community-container .announcement h {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  color: #f8f9fa;
+  background: rgba(255, 204, 0, 0.15); /* Light Gold Background */
+  padding: 8px 12px;
+  margin: 5px 0;
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+/* Forum Section */
+.community-container .forum-section {
+  padding: 20px;
+  background: #2C2F45;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Community Chat */
+.community-container .community-chat-section {
+  padding: 20px;
+  background: #2C2F45;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Chat Messages */
+.community-container .chat .message {
+  background: #39424E;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border-left: 5px solid #F4C95D; /* Gold Accent */
+}
+
+/* Bottom Input */
+.community-container .bottom-input {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.community-container .doubt-input-container,
+.community-container .message-input-container {
+  display: flex;
+  width: 50%;
+}
+
+.community-container .doubt-input-container input,
+.community-container .message-input-container input {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background: #1E2A38;
+  color: white;
+  border: 1px solid #F4C95D;
+}
+
+.community-container .doubt-input-container button,
+.community-container .message-input-container button {
+  background: #F4C95D;
+  color: black;
+  border: none;
+  padding: 12px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.community-container .doubt-input-container button:hover,
+.community-container .message-input-container button:hover {
+  background: #E5B849;
+}
+.logout-btn {
+  margin-top: auto;
+  background: #e74c3c;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.logout-btn:hover {
+  background: #c0392b;
 }

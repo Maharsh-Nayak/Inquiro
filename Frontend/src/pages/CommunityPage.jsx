@@ -1,6 +1,8 @@
 import React, { useState, useEffect, use } from "react";
 import "./CommunityPage.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 const CommunityPage = () => {
   const [chatText, setChatText] = useState([]);
@@ -12,6 +14,12 @@ const CommunityPage = () => {
   const [comments, setComments] = useState([]);
 
   const [activeThreadId, setActiveThreadId] = useState(null);
+  const navigate = useNavigate();
+
+const handleLogout = () => {
+  navigate("/"); // Redirect to home page
+};
+
 
   // Update the click handler
   const toggleTextBox = (threadId) => {
@@ -193,6 +201,7 @@ const CommunityPage = () => {
         >
           Community
         </button>
+        <button className="logout-btn" onClick={handleLogout}>Logout</button>
       </div>
 
       {/* Main Content */}
@@ -201,7 +210,12 @@ const CommunityPage = () => {
           <div className="forum-section">Doubts Section</div>
         )}
         {selectedTab === "announcement" && (
-          <div className="announcement-section">Announcements</div>
+          <div className="announcement-section">Announcements:<h>GATE-2025 exam centres changed to Lucknow for candidates who were earlier allotted Prayagraj for 15th and 16th February 2025 amid Mahakumbh. The candidates are advised to download the freshly released admit cards from the GOAPS portal (https://goaps.iitr.ac.in/login)</h>
+          <h>GATE-2025 exam centres changed to Lucknow for candidates who were earlier allotted Prayagraj for 1st and 2nd February 2025 amid Mahakumbh. The candidates are advised to download the freshly released admit cards from the GOAPS portal (https://goaps.iitr.ac.in/login)
+            </h>
+            <h>GATE 2025 Admit Cards are now available to download from the GOAPS portal https://goaps.iitr.ac.in/login. Best of luck for GATE 2025.</h>
+            <h>Download of GATE 2025 Admit Card will be available from 2nd January 2025 7th January 2025.</h>
+            <h>Candidates Data Change option is closed now and Defect Rectification will be closed soon, please do the rectification whoever not attended.</h></div>
         )}
         {selectedTab === "community" && (
           <div className="community-chat-section">
