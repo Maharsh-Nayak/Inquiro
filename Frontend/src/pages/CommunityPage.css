@@ -1,6 +1,4 @@
-/* Community Page - Overall Styles */
-.community-container {
-  display: flex;
+.community-container { display: flex;
   height: 100vh;
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(to right, #1B1F3B, #2C2F45); /* Dark Navy to Gray */
