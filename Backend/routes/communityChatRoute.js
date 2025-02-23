@@ -3,12 +3,12 @@ import CommunityChat from "../models/communityChat.js";
 
 const router = express.Router();
 
-router.use((req, res, next) => {
-  if (!req.cookies["user"]) {
-    return res.status(401).json({ error: "Unauthorized" });
-  }
-  next();
-});
+// router.use((req, res, next) => {
+//   if (!req.cookies["user"]) {
+//     return res.status(401).json({ error: "Unauthorized" });
+//   }
+//   next();
+// });
 
 router.get("/", async (req, res) => {
   try {
@@ -27,8 +27,8 @@ router.post("/", async (req, res) => {
     if (newMsg === null) {
       return res.status(400).json({ error: "All fields are required" });
     }
-    let user = req.cookies["user"];
-    const newChat = new CommunityChat({ msg: newMsg, name: user });
+    // let user = req.cookies["user"];
+    const newChat = new CommunityChat({ msg: newMsg });
     await newChat.save();
     console.log("new chat");
     res.status(201).json(newChat);
