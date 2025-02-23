@@ -5,12 +5,12 @@ import { tr } from "@faker-js/faker";
 
 const router = express.Router();
 
-router.use((req, res, next) => {
-  if (!req.cookies["user"]) {
-    return res.status(401).json({ error: "Unauthorized" });
-  }
-  next();
-});
+// router.use((req, res, next) => {
+//   if (!req.cookies["user"]) {
+//     return res.status(401).json({ error: "Unauthorized" });
+//   }
+//   next();
+// });
 
 router.get("/", async (req, res) => {
   try {
@@ -24,7 +24,7 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   const { newDoubt } = req.body;
-  let author = req.cookies["user"];
+  // let author = req.cookies["user"];
   try {
     const newThread = new ForumThread({ content : newDoubt });
     await newThread.save();
