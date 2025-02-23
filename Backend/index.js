@@ -12,11 +12,30 @@ import progressTrackerRoutes from './routes/ProgressTrackerRoutes.js';
 import chatbotRoutes from './routes/ChatbotRoutes.js';
 import forumThreadRoutes from "./routes/ForumThreadRoutes.js";
 import cors from "cors";
+import cookieParser from "cookie-parser";
+import session from "express-session";
+// import Server from "socket.io";
 
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
+app.use(session({
+  secret:"secretcode",
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    expires: Date.now() + 60*60*1000,
+    maxAge: 60*60*1000,
+    httpOnly: true,
+  }
+}));
 
+// const server=http.createServer(app);
+// const io = new Server(server);
+// io.on("connection", (socket) => {
 
+// })
 
 connect('mongodb+srv://Userdb:whyshouldisay1@cluster0.uuehk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
   useNewUrlParser: true,
@@ -25,7 +44,7 @@ connect('mongodb+srv://Userdb:whyshouldisay1@cluster0.uuehk.mongodb.net/?retryWr
 .then(() => console.log("✅ Connected to MongoDB"))
 .catch((err) => console.error("❌ MongoDB Connection Error:", err));
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
@@ -33,7 +52,8 @@ app.listen(PORT, () => {
 
 app.use(cors(
     {
-        origin: "https://inquiro-1.onrender.com",
+        // origin: "https://inquiro-1.onrender.com",
+        origin: "http://localhost:5173",
         credentials: true,
     }
 ));

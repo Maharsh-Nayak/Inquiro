@@ -21,6 +21,9 @@ const LoginPage = () => {
     console.log("Login Data:", formData);
 
     try {
+      // let response = await axios.post('https://inquiro.onrender.com/api/users/login', formData, {
+      //   headers: { 'Content-Type': 'application/json' }
+      // });
       let response = await axios.post('/api/users/login', formData, {
         headers: { 'Content-Type': 'application/json' }
       });

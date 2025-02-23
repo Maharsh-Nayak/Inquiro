@@ -1,29 +1,27 @@
 import express from "express";
 import User from "../models/User.js";
-import mongoose from "mongoose";
-import { tr } from "@faker-js/faker";
 
 const router = express.Router();
 
 
-router.get("/", async (req, res) => {
-  try {
-    const users = await User.find();
-    res.json(users);
-  } catch (error) {
-    res.status(500).json({ error: "Server error" });
-  }
-});
+// router.get("/", async (req, res) => {
+//   try {
+//     const users = await User.find();
+//     res.json(users);
+//   } catch (error) {
+//     res.status(500).json({ error: "Server error" });
+//   }
+// });
 
-router.post("/", async (req, res) => {
-  try {
-    const newUser = new User(req.body);
-    await newUser.save();
-    res.status(201).json(newUser);
-  } catch (error) {
-    res.status(400).json({ error: "Failed to create user" });
-  }
-});
+// router.post("/", async (req, res) => {
+//   try {
+//     const newUser = new User(req.body);
+//     await newUser.save();
+//     res.status(201).json(newUser);
+//   } catch (error) {
+//     res.status(400).json({ error: "Failed to create user" });
+//   }
+// });
 
 router.post("/login", async (req, res) => {
   console.log("Login Data:", req.body);
@@ -36,6 +34,7 @@ router.post("/login", async (req, res) => {
     }
     else if(user.password === password){
       console.log("Login successful");
+      res.cookie("user", user._id);
       res.status(200).json(user);
     }
     else{
@@ -64,7 +63,8 @@ router.post("/sign_up" , async (req, res) => {
   {
     let newUser = new User({ name, email, phone, password, exam });
     await newUser.save().then(() => {
-      console.log("User created")
+      console.log("User created");
+      res.cookie("user", newUser._id);
       res.status(200).json(newUser);
     }).catch((err) => {
       console.log("Error:", err);

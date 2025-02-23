@@ -25,6 +25,9 @@ const GetStartedPage = () => {
     console.log("User Data:", formData);
 
     try {
+      // let Response = await axios.post('https://inquiro.onrender.com/api/users/sign_up', formData, {
+      //   headers: { 'Content-Type': 'application/json' }
+      // });
       let Response = await axios.post('/api/users/sign_up', formData, {
         headers: { 'Content-Type': 'application/json' }
       });
