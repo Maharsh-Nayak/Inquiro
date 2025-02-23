@@ -1,13 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LandingPage.css";
 import Cookies from "js-cookie";
-import { useEffect } from "react";
 import gateImage from "../assets/WhatsApp Image 2025-02-23 at 15.48.45_2167de68.jpg";
 import catImage from "../assets/WhatsApp Image 2025-02-23 at 15.41.47_ddc660dc.jpg";
 import ieltsImage from "../assets/WhatsApp Image 2025-02-23 at 15.50.50_8f15aa6d.jpg";
 import greImage from "../assets/WhatsApp Image 2025-02-23 at 15.46.39_0db4a43a.jpg";
-
 
 const LandingPage = () => {
   const navigate = useNavigate(); 
@@ -19,13 +17,20 @@ const LandingPage = () => {
     }
   }, [navigate]);
 
+  // Function to scroll to About Us section
+  const scrollToAbout = () => {
+    document.getElementById("about").scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="landing-container">
       {/* Navbar */}
       <nav className="navbar">
         <h1 className="logo">Inquiro</h1>
         <div className="nav-links">
-          <a href="#about">About Us</a>
+          <button className="btn-link" onClick={scrollToAbout}>
+            About Us
+          </button>
           <button className="btn-login" onClick={() => navigate("/login")}>
             Login
           </button>
@@ -41,7 +46,7 @@ const LandingPage = () => {
         </button>
       </header>
 
-      {/* Scrollable Section with Image and Description */}
+      {/* Scrollable Section with Exam Details */}
       <section className="exam-details">
         <h2>Explore Exams</h2>
 
@@ -80,6 +85,16 @@ const LandingPage = () => {
           </div>
           <img src={greImage} alt="GRE Exam" className="exam-image right" />
         </div>
+      </section>
+
+      {/* About Us Section */}
+      <section id="about" className="about-us">
+        <h2>About Inquiro</h2>
+        <p>
+          Inquiro is an innovative platform designed to help students prepare for competitive exams like GATE, CAT, IELTS, and GRE. 
+          Our goal is to provide structured study resources, a supportive community, and real-time progress tracking to enhance 
+          your learning experience. Join us and take the next step toward exam success!
+        </p>
       </section>
     </div>
   );

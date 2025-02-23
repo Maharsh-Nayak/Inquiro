@@ -149,3 +149,32 @@ body:has(.get-started-container) {
   background: #fca311;
   color: black;
 }
+.btn {
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  width: 100%; /* Ensures both buttons have the same width */
+  max-width: 300px; /* Adjust as needed */
+  display: block;
+  margin: 10px auto; /* Centers the button */
+}
+
+.btn-primary {
+  background-color: #007bff; /* Bootstrap blue */
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Darker blue for hover effect */
+}
+
+.btn-secondary {
+  background-color: #6c757d; /* Grayish color */
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268; /* Darker gray */
+}

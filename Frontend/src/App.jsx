@@ -12,6 +12,7 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/get-started" element={<GetStartedPage />} />
       <Route path="/community" element={<CommunityPage/>}/>
+      {/* <Route path="/" element={<CommunityPage/>}/> */}
     </Routes>
   );
 }
