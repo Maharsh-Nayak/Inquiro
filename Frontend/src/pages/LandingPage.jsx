@@ -1,8 +1,20 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./LandingPage.css"; 
+import Cookies from "js-cookie";
+import { useEffect } from "react";
+import "./CommunityPage";
+
 const LandingPage = () => {
   const navigate = useNavigate(); // Hook for navigation
+
+  useEffect(() => {
+    const userCookie = Cookies.get('user');
+    if (userCookie) {
+      // Redirect to dashboard or homepage if logged in
+      navigate('/community');
+    }
+  }, [navigate]);
 
   return (
     <div className="landing-container">

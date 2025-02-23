@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./LoginPage.css"; 
+import "./CommunityPage";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const LoginPage = () => {
       console.log("Response:", response);
       if (response.status === 200) {
         console.log("Login successful");
-        navigate("/");
+        navigate("/community");
       }
     } catch (error) {
       console.log("Error:", error);

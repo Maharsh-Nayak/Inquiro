@@ -4,10 +4,18 @@ import User from "../models/User.js";
 
 const router = express.Router();
 
+router.use((req, res, next) => {
+  if (!req.cookies["user"]) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+  next();
+});
+
 router.get("/", async (req, res) => {
   try {
     const threads = await ForumThread.find().populate("author", "name");
-    res.json(threads);
+    console.log(threads);
+    res.status(200).json(threads);
   } catch (error) {
     res.status(500).json({ error: "Failed to get forum threads" });
   }
@@ -46,6 +54,7 @@ router.post("/:threadId/comments", async (req, res) => {
     res.status(400).json({ error: "Failed to add comment" });
   }
 });
+
 router.post("/:threadId/like", async (req, res) => {
   const { threadId } = req.params;
   const { userId } = req.body;

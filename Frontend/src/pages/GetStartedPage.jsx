@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./GetStartedPage.css";
 import axios from "axios";
 import "./LoginPage.css"; 
+import "./CommunityPage";
 
 const GetStartedPage = () => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const GetStartedPage = () => {
       console.log("Response:", Response);
       if (Response.status === 200) {
         console.log("Registration successful");
-        navigate("/");
+        navigate("/community");
       }
     } catch (error) {
       console.log("Error:", error);

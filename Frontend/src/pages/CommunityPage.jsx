@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import "./CommunityPage.css";
+import axios from "axios";
+import { useEffect } from "react";
 
 const CommunityPage = () => {
   const [selectedTab, setSelectedTab] = useState("forum");
   const [doubtText, setDoubtText] = useState("");
   const [chatText, setChatText] = useState("");
+
+  useEffect(() => {
+    axios.get("/api/communitiesChat").then((res) => {
+      console.log(res.data);
+      setChatText(res.data);
+    });
+  }, []);
 
   return (
     <div className="community-container">

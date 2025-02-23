@@ -14,6 +14,8 @@ import forumThreadRoutes from "./routes/ForumThreadRoutes.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import session from "express-session";
+import communityChatRoute from "./routes/communityChatRoute.js";
+import communityChat from "./models/communityChat.js";
 // import Server from "socket.io";
 
 const app = express();
@@ -67,6 +69,7 @@ app.use("/api/communities", communityRoutes);
 app.use("/api/progress", progressTrackerRoutes);
 app.use("/api/chatbot", chatbotRoutes);
 app.use("/api/forum", forumThreadRoutes);
+app.use("/api/communitiesChat", communityChatRoute);
 app.get("/", (req, res) => {
   res.send("Welcome to the Exam Preparation!");
 });

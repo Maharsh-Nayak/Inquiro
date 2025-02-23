@@ -31,8 +31,9 @@ const forumThreadSchema = new mongoose.Schema({
         }
     ],
     likes: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
+        // type: mongoose.Schema.Types.ObjectId,
+        // ref: "User"
+        type: Number
     }],
     createdAt: {
         type: Date,
