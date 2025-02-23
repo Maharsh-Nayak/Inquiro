@@ -3,12 +3,12 @@ import CommunityChat from "../models/communityChat.js";
 
 const router = express.Router();
 
-// router.use((req, res, next) => {
-//   if (!req.cookies["user"]) {
-//     return res.status(401).json({ error: "Unauthorized" });
-//   }
-//   next();
-// });
+router.use((req, res, next) => {
+  if (!req.cookies["user"]) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+  next();
+});
 
 router.get("/", async (req, res) => {
   try {
