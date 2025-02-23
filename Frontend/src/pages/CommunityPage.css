@@ -1,4 +1,6 @@
-.community-container { display: flex;
+/* Community Page - Overall Styles */
+.community-container {
+  display: flex;
   height: 100vh;
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(to right, #1B1F3B, #2C2F45); /* Dark Navy to Gray */
@@ -163,4 +165,103 @@
 
 .logout-btn:hover {
   background: #c0392b;
+}
+/* Announcements Section */
+.community-container .announcement-section {
+  padding: 20px;
+  background: #1E1E2E; /* Dark Navy */
+  border-radius: 10px;
+  max-width: 85%;
+  margin: auto;
+  color: #f8f9fa;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Each Announcement Box */
+.community-container .announcement {
+  background: #282A36; /* Dark Gray */
+  padding: 15px;
+  margin: 20px 0; /* Increased margin for better separation */
+  border-radius: 10px;
+  border-left: 6px solid #F4C95D; /* Gold Accent */
+  box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.1);
+  transition: 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.community-container .announcement:hover {
+  transform: scale(1.02);
+  box-shadow: 4px 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+/* Announcement Title */
+.community-container .announcement-title {
+  font-size: 20px;
+  color: #F4C95D; /* Gold */
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* Announcement Content */
+.community-container .announcement-content {
+  font-size: 16px;
+  color: #f8f9fa;
+  line-height: 1.6;
+}
+
+/* Each Point in the Announcement */
+.community-container .announcement-content p {
+  background: rgba(255, 204, 0, 0.15); /* Light Gold Background */
+  padding: 10px 15px;
+  margin: 8px 0;
+  border-radius: 8px;
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.1);
+  border-left: 4px solid #F4C95D; /* Gold Accent */
+}
+
+/* Differentiate Every Announcement Properly */
+.community-container .announcement:nth-child(odd) {
+  border-left: 6px solid #F4A261; /* Slightly different color for alternate */
+}
+
+.community-container .announcement:nth-child(even) {
+  border-left: 6px solid #F4C95D;
+}
+.announcement-section {
+  padding: 20px;
+  background: #1E1E2E;
+  border-radius: 10px;
+  max-width: 85%;
+  margin: auto;
+  color: #f8f9fa;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Each Announcement Box */
+.announcement-section h {
+  display: block;
+  background: #282A36;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border-left: 6px solid #F4C95D;
+  box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.1);
+  transition: 0.3s ease-in-out;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Hover Effect */
+.announcement-section h:hover {
+  transform: scale(1.02);
+  box-shadow: 4px 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+/* Differentiate Every Announcement Properly */
+.announcement-section h:nth-child(odd) {
+  border-left: 6px solid #F4A261;
+}
+
+.announcement-section h:nth-child(even) {
+  border-left: 6px solid #F4C95D;
 }
