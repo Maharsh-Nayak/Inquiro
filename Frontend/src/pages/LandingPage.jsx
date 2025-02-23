@@ -1,18 +1,21 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./LandingPage.css"; 
+import "./LandingPage.css";
 import Cookies from "js-cookie";
 import { useEffect } from "react";
-import "./CommunityPage";
+import gateImage from "../assets/WhatsApp Image 2025-02-23 at 15.48.45_2167de68.jpg";
+import catImage from "../assets/WhatsApp Image 2025-02-23 at 15.41.47_ddc660dc.jpg";
+import ieltsImage from "../assets/WhatsApp Image 2025-02-23 at 15.50.50_8f15aa6d.jpg";
+import greImage from "../assets/WhatsApp Image 2025-02-23 at 15.46.39_0db4a43a.jpg";
+
 
 const LandingPage = () => {
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate(); 
 
   useEffect(() => {
-    const userCookie = Cookies.get('user');
+    const userCookie = Cookies.get("user");
     if (userCookie) {
-      // Redirect to dashboard or homepage if logged in
-      navigate('/community');
+      navigate("/community");
     }
   }, [navigate]);
 
@@ -38,26 +41,44 @@ const LandingPage = () => {
         </button>
       </header>
 
-      {/* Scrollable Info Section */}
-      <section className="exam-info">
+      {/* Scrollable Section with Image and Description */}
+      <section className="exam-details">
         <h2>Explore Exams</h2>
-        <div className="exam-list">
-          <div className="exam-card">
+
+        {/* GATE */}
+        <div className="exam-section">
+          <img src={gateImage} alt="GATE Exam" className="exam-image left" />
+          <div className="exam-description right">
             <h3>GATE</h3>
-            <p>Graduate Aptitude Test in Engineering</p>
+            <p>The Graduate Aptitude Test in Engineering (GATE) is an entrance exam for postgraduate engineering programs.</p>
           </div>
-          <div className="exam-card">
+        </div>
+
+        {/* CAT */}
+        <div className="exam-section reverse">
+          <div className="exam-description left">
             <h3>CAT</h3>
-            <p>Common Admission Test for MBA</p>
+            <p>The Common Admission Test (CAT) is an entrance exam for MBA programs in India's top business schools.</p>
           </div>
-          <div className="exam-card">
+          <img src={catImage} alt="CAT Exam" className="exam-image right" />
+        </div>
+
+        {/* IELTS */}
+        <div className="exam-section">
+          <img src={ieltsImage} alt="IELTS Exam" className="exam-image left" />
+          <div className="exam-description right">
             <h3>IELTS</h3>
-            <p>International English Language Testing System</p>
+            <p>The International English Language Testing System (IELTS) measures English proficiency for study or work abroad.</p>
           </div>
-          <div className="exam-card">
+        </div>
+
+        {/* GRE */}
+        <div className="exam-section reverse">
+          <div className="exam-description left">
             <h3>GRE</h3>
-            <p>Graduate Record Examination</p>
+            <p>The Graduate Record Examination (GRE) is a standardized test for admission to graduate schools worldwide.</p>
           </div>
+          <img src={greImage} alt="GRE Exam" className="exam-image right" />
         </div>
       </section>
     </div>
