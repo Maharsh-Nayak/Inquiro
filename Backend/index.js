@@ -48,7 +48,7 @@ connect('mongodb+srv://Userdb:whyshouldisay1@cluster0.uuehk.mongodb.net/?retryWr
 
 app.use(cors({
   // origin: "http://localhost:5173",
-  origin: "https://inquiro.onrender.com",
+  origin: "https://inquiro-1.onrender.com",
   credentials: true,
 }));
 const PORT = process.env.PORT || 3000;
