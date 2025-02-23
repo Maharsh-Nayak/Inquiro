@@ -1,8 +1,12 @@
 import React, { useState, useEffect, use } from "react";
 import "./CommunityPage.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const CommunityPage = () => {
+
+  const navigate = useNavigate();
+
   const [chatText, setChatText] = useState([]);
   const [newMsg, setNewMsg] = useState("");
   const [newDoubt, setNewDoubt] = useState("");
@@ -17,6 +21,18 @@ const CommunityPage = () => {
   const toggleTextBox = (threadId) => {
     setActiveThreadId(prevId => (prevId === threadId ? null : threadId));
   };
+
+  function handleLogout() {
+    axios
+      .post("/api/users/logout")
+      .then((res) => {
+        console.log("Logout Response:", res.status);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("Error logging out:", error);
+      });
+  }
 
   // Add new comment
   async function handleAddComment(e) {
@@ -192,6 +208,9 @@ const CommunityPage = () => {
           className={selectedTab === "community" ? "active" : ""}
         >
           Community
+        </button>
+        <button className="logout-button" onClick={handleLogout}>
+          Logout
         </button>
       </div>
 

@@ -75,5 +75,11 @@ router.post("/sign_up" , async (req, res) => {
   }
 });
 
+router.post("/logout", async (req, res) => {
+  console.log("Logout");
+  res.clearCookie("user");
+  res.status(200).json({ message: "Logged out" });
+});
+
 
 export default router;
