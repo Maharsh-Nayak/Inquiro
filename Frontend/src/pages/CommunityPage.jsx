@@ -17,11 +17,18 @@ const CommunityPage = () => {
   const [comments, setComments] = useState([]);
 
   const [activeThreadId, setActiveThreadId] = useState(null);
-  const navigate = useNavigate();
 
-const handleLogout = () => {
-  navigate("/"); // Redirect to home page
-};
+  const handleLogout = () => {
+      axios
+        .post("/api/users/logout")
+        .then((res) => {
+          console.log("Logout Response:", res.status);
+          navigate("/");
+        })
+        .catch((error) => {
+          console.error("Error logging out:", error);
+        });
+  };
 
 
   // Update the click handler
@@ -29,17 +36,6 @@ const handleLogout = () => {
     setActiveThreadId(prevId => (prevId === threadId ? null : threadId));
   };
 
-  function handleLogout() {
-    axios
-      .post("/api/users/logout")
-      .then((res) => {
-        console.log("Logout Response:", res.status);
-        navigate("/");
-      })
-      .catch((error) => {
-        console.error("Error logging out:", error);
-      });
-  }
 
   // Add new comment
   async function handleAddComment(e) {
@@ -215,6 +211,9 @@ const handleLogout = () => {
           className={selectedTab === "community" ? "active" : ""}
         >
           Community
+        </button>
+        <button className="logout-button" onClick={handleLogout}>
+          Logout
         </button>
       </div>
 
