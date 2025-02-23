@@ -22,14 +22,15 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { msg } = req.body;
+  const { newMsg } = req.body;
   try {
-    if (msg === null) {
+    if (newMsg === null) {
       return res.status(400).json({ error: "All fields are required" });
     }
     let user = req.cookies["user"];
-    const newChat = new CommunityChat({ msg, name: user });
+    const newChat = new CommunityChat({ msg: newMsg, name: user });
     await newChat.save();
+    console.log("new chat");
     res.status(201).json(newChat);
   } catch (error) {
     res.status(400).json({ error: "Failed to create chat" });

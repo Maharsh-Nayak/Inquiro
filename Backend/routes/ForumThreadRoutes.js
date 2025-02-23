@@ -22,12 +22,10 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { title, content, authorId } = req.body;
+  const { newDoubt } = req.body;
+  let author = req.cookies["user"];
   try {
-    if (!title || !content || !authorId) {
-        return res.status(400).json({ error: "All fields are required" });
-      }
-    const newThread = new ForumThread({ title, content, author: authorId });
+    const newThread = new ForumThread({ content : newDoubt, author });
     await newThread.save();
     res.status(201).json(newThread);
   } catch (error) {

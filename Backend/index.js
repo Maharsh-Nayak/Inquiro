@@ -46,19 +46,17 @@ connect('mongodb+srv://Userdb:whyshouldisay1@cluster0.uuehk.mongodb.net/?retryWr
 .then(() => console.log("✅ Connected to MongoDB"))
 .catch((err) => console.error("❌ MongoDB Connection Error:", err));
 
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true,
+}));
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
 
-app.use(cors(
-    {
-        // origin: "https://inquiro-1.onrender.com",
-        origin: "http://localhost:5173",
-        credentials: true,
-    }
-));
 
 app.use("/api/users", userRoutes);
 app.use("/api/exams", examRoutes);
@@ -69,7 +67,7 @@ app.use("/api/communities", communityRoutes);
 app.use("/api/progress", progressTrackerRoutes);
 app.use("/api/chatbot", chatbotRoutes);
 app.use("/api/forum", forumThreadRoutes);
-app.use("/api/communitiesChat", communityChatRoute);
+app.use("/api/communityChat", communityChatRoute);
 app.get("/", (req, res) => {
   res.send("Welcome to the Exam Preparation!");
 });
